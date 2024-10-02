@@ -1,0 +1,28 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: postgres-dr
+  namespace: namespace-name
+  labels:
+    app: egress-name
+    istio: egress-name
+spec:
+  exportTo:
+    - .
+  host: postgres.database.com.ru
+  trafficPolicy:
+    loadBalancer:
+      simple: LEAST_CONN
+    portLevelSettings:
+      - port:
+          number: 6544
+        tls:
+          caCertificates: /path/to/certs/chain.pem
+          clientCertificate: /path/to/cert/server.pem
+          privateKey: /path/to/cert/server.key.pem
+          mode: MUTUAL
+          sni: postgres.database.com.ru
+  workloadSelector:
+    matchLabels:
+      app: egress-name
+      istio: egress-name
