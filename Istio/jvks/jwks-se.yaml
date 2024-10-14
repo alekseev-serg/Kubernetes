@@ -1,0 +1,23 @@
+apiVersion: networking.istio.io/v1beta1
+kind: ServiceEntry
+metadata:
+  name: postgres-se
+  namespace: namespace-name
+  labels:
+    app: egress-name
+    istio: egress-name
+spec:
+  addresses:
+    - 10.25.45.38/32
+  endpoints:
+    - address: 10.25.45.38
+  exportTo:
+    - .
+  hosts:
+    - postgres.database.com.ru
+  location: MESH_EXTERNAL
+  ports:
+    - name: postgres-port
+      number: 6544
+      protocol: postgres
+  resolution: STATIC

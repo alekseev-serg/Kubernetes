@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: postgres-se
+  namespace: namespace-name
+  labels:
+    app: egress-name
+    istio: egress-name
+spec:
+  selector:
+    app: egress-name
+    istio: egress-name
+  servers:
+    - hosts:
+        - postgres.database.com.ru
+      port:
+        name: tcp-12000
+        number: 12000
+        protocol: TCP

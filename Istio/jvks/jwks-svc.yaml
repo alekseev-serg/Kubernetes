@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-svc
+  namespace: namespace-name
+  labels:
+    app: egress-name
+    istio: egress-name
+spec:
+  ports:
+    - name: tcp-12000
+      protocol: TCP
+      port: 12000
+      targetPort: 12000
+  selector:
+    app: egress-name
