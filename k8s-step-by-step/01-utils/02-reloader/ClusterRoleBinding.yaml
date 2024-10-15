@@ -7,7 +7,7 @@ metadata:
   namespace: monitoring
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
+  kind: ClusterRole-reader.yaml
   name: reloader-reloader-role
 subjects:
   - kind: ServiceAccount
