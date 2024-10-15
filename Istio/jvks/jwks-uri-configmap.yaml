@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jwksuri
+  namespace: namespace-name
+data:
+  JWKS_URI: 'http://jwks.com.ru:2000/auth/connect/certs'
