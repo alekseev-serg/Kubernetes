@@ -1,23 +1,22 @@
 apiVersion: networking.istio.io/v1beta1
 kind: ServiceEntry
 metadata:
-  name: postgres-se
+  name: jwks-se
   namespace: namespace-name
   labels:
     app: egress-name
     istio: egress-name
 spec:
-  addresses:
-    - 10.25.45.38/32
-  endpoints:
-    - address: 10.25.45.38
   exportTo:
     - .
   hosts:
-    - postgres.database.com.ru
+    - jwks.com.ru
   location: MESH_EXTERNAL
   ports:
-    - name: postgres-port
-      number: 6544
-      protocol: postgres
-  resolution: STATIC
+    - name: http-2000
+      number: 2000
+      protocol: HTTP
+    - name: https
+      number: 443
+      protocol: HTTPS
+  resolution: DNS

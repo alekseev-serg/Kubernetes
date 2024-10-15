@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  name: postgres-se
+  name: postgres-gw
   namespace: namespace-name
   labels:
     app: egress-name

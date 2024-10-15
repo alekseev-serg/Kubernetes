@@ -1,16 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: postgres-svc
+  name: jwks-svc
   namespace: namespace-name
   labels:
     app: egress-name
     istio: egress-name
 spec:
   ports:
-    - name: tcp-12000
+    - name: tcp-14000
       protocol: TCP
-      port: 12000
-      targetPort: 12000
+      port: 14000
+      targetPort: 14000
   selector:
     app: egress-name

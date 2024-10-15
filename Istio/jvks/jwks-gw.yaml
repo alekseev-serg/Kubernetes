@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  name: postgres-se
+  name: jwks-se
   namespace: namespace-name
   labels:
     app: egress-name
@@ -12,8 +12,8 @@ spec:
     istio: egress-name
   servers:
     - hosts:
-        - postgres.database.com.ru
+        - jwks.com.ru
       port:
-        name: tcp-12000
-        number: 12000
+        name: tcp-14000
+        number: 14000
         protocol: TCP

@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: postgres-se
+  name: jwks-vsvc
   namespace: namespace-name
   labels:
     app: egress-name
@@ -11,27 +11,25 @@ spec:
     - .
   gateways:
     - mesh
-    - postgres-gw
+    - jwks-gw
   hosts:
-    - postgres.database.com.ru
-  tcp:
-    - match:
-        - destinationSubnets:
-            - 10.25.45.38/32
-          gateways:
-            - mesh
-          port: 6544
-      route:
-        - destination:
-            host: postgres-svc
-            port:
-              number: 12000
+    - jwks.com.ru
+  http:
     - match:
         - gateways:
-            - postgres-gw
-          port: 12000
+            - mesh
+          port: 2000
       route:
         - destination:
-            host: postgres.database.com.ru
+            host: jwks-svc
             port:
-              number: 6544
+              number: 14000
+    - match:
+        - gateways:
+            - jwks-gw
+          port: 14000
+      route:
+        - destination:
+            host: jwks.com.ru
+            port:
+              number: 443
