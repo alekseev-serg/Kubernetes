@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: victoriametrics-sys
+  namespace: monitoring
+  labels:
+    app: victoriametrics-sys
+spec:
+  ports:
+    - port: 8428
+      name: victoria
+      protocol: TCP
+  clusterIP: None
+  selector:
+    app: victoriametrics-sys
