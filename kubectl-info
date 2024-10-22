@@ -10,3 +10,5 @@ kubectl delete node node4 - delete node
 
 kubectl -n kubernetes-dashboard port-forward svc/kubernetes-dashboard-kong-proxy 8443:443
 kubectl proxy
+
+kubectl delete namespace kubernetes-dashboard
