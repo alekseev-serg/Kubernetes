@@ -1,0 +1,9 @@
+kubectl cluster-info
+kubectl get nodes
+kubectl describe node node1
+kubectl get ns
+kubectl -n kube-system get all
+kubectl -n kube-system get pod
+
+kubectl drain node4 - delete all pods
+kubectl delete node node4 - delete node
