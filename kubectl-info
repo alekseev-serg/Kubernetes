@@ -12,3 +12,10 @@ kubectl -n kubernetes-dashboard port-forward svc/kubernetes-dashboard-kong-proxy
 kubectl proxy
 
 kubectl delete namespace kubernetes-dashboard
+
+kubectl -n kube-system get deployment.apps/kubernetes-dashboard -o yaml
+
+kubectl apply -f dashboard.yaml
+kubectl delete -d dashboard.yaml
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yamlls
