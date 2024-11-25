@@ -1,0 +1,29 @@
+# ReplicaSet - контролер репликаций, гарантирует что постоянно будут рабочие поды.
+# ReplicaSet - apiVersion app/v1, ReplicationController - v1
+# Для ReplicaSet требуется определение selector
+# Может управлять подами, которые были созданы до создания ReplicaSet
+#
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp
+  labels:
+    app: myapp
+    type: frontend
+spec:
+  selector:
+    matchLabels:
+      app: myapp
+      type: frontend
+  template:
+    metadata:
+      name: myapp
+      labels:
+        app: myapp
+        type: frontend
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+  replicas: 3
