@@ -1,4 +1,5 @@
 kubectl cluster-info
+kubectl get all
 kubectl get nodes
 kubectl describe node node1
 kubectl get ns
@@ -31,6 +32,11 @@ kubectl delete pod podname
 kubectl create -f replicaset.yaml
 kubectl get replicaset
 kubectl get replicationcontroller
+kubectl edit replicaset new-replica-set
 kubectl delete replicaset replicasetname
 kubectl replace -f replicaset.yaml - через файл обновить репликасет, увеличив кол-во реплик
 kubectl scale --replicas=6 -f replicaset.yaml - через команду
+
+-------------------------------DEPLOYMENT------------------------------------
+kubectl create -f deployment.yaml
+kubectl get deployments

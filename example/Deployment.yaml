@@ -1,3 +1,6 @@
+# Deployment - имеет возможность откатиться. Выше в иерархии чем ReplicaSet
+# Даёт возможность обновиться плавно RollingUpdates
+#
 apiVersion: apps/v1
 kind: Deployment
 metadata:
