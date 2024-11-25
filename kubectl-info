@@ -43,6 +43,7 @@ kubectl create -f deployment.yaml
 kubectl get deployments
 
 kubectl apply -f deployment.yaml
+kubectl edit deployment name
 kubectl set image deployment/name nginx=nginx:1.71
 
 kubectl rollout status deployment/name
