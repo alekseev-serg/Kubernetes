@@ -38,5 +38,18 @@ kubectl replace -f replicaset.yaml - через файл обновить реп
 kubectl scale --replicas=6 -f replicaset.yaml - через команду
 
 -------------------------------DEPLOYMENT------------------------------------
+kubectl create deployment nginx --image=nginx
 kubectl create -f deployment.yaml
 kubectl get deployments
+
+kubectl apply -f deployment.yaml
+kubectl set image deployment/name nginx=nginx:1.71
+
+kubectl rollout status deployment/name
+kubectl rollout history deployment/name
+
+kubectl rollout undo deployment/name - откатить изменения
+
+Стратегии деплоймента
+Recreate - сначала удаляет, потом создаёт
+RollingUpdate - удаляет один экземпляр старой версии и добавляет новый и так постепенно все.
