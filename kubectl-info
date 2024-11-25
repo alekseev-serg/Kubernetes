@@ -19,3 +19,10 @@ kubectl apply -f dashboard.yaml
 kubectl delete -d dashboard.yaml
 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
+
+-------------------------------PODS------------------------------------
+kubectl run nginx --image nginx
+kubectl get pods
+kubectl get pods -o wide - подробности
+kubectl describe pod podname
+kubectl delete pod podname
