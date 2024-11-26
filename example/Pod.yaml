@@ -17,19 +17,21 @@ spec:
   containers:
     - name: python-container
       image: python
-      command: ["python3", "app.py"]
-      args: ["--size", "big"]
+      command: [ "python3", "app.py" ]
+      args: [ "--size", "big" ]
       env:
         - name: ROCKET_SIZE
           value: average
-#        - name: ROCKET_SIZE
-#          valueFrom:
-#            configMapKeyRef:
-#              key: ROCKET_SIZE
-#              name: rocket-config
+      #        - name: ROCKET_SIZE
+      #          valueFrom:
+      #            configMapKeyRef:
+      #              key: ROCKET_SIZE
+      #              name: rocket-config
       envFrom:
         - configMapRef:
             name: rocket-config
+        - secretRef:
+            name: rockets-secret
 #  volumes:
 #    - name: rockets-config-volume
 #      configMap:

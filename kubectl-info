@@ -100,3 +100,18 @@ kubectl create configmap app-name-configmap \
 --from-literal=key=value\
 
 kubectl create configmap app-name-configmap --from-env-file=/path/to/file
+
+-------------------------------SECRET-------------------------------------
+kubectl create secret generic db-secret \
+ --from-literal=DB_Host=sql01 \
+ --from-literal=DB_User=root \
+ --from-literal=DB_Password=password123
+
+kubectl create secret generic secret-name --from-env-file=/path/to/file
+kubectl create secret generic ssh-key-secret --from-file=ssh-privatekey=/root/.ssh/id_rsa
+
+echo -n 'string' | base64
+kubectl apply -f secret.yaml
+
+kubectl get secrets
+kubectl get secret name -o yaml
