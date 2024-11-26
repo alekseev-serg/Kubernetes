@@ -23,6 +23,8 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/a
 
 -------------------------------PODS------------------------------------------
 kubectl run nginx --image nginx
+kubectl run redis --image=redis --labels="app=redis"
+kubectl run httpd --image=httpd:alpine --port=80 --expose
 kubectl get pods
 kubectl get pods -o wide - подробности
 kubectl get pods --all-namespaces
@@ -43,6 +45,8 @@ kubectl scale rs new-replica-set --replicas=5
 -------------------------------DEPLOYMENT------------------------------------
 kubectl create deployment nginx --image=nginx
 kubectl create -f deployment.yaml
+kubectl create deployment webapp --image=rotorocloud/simple-webapp-rockets --replicas=3
+kubectl create deployment redis-deploy -n=dev-ns --image=redis --replicas=2
 kubectl get deployments
 
 kubectl apply -f deployment.yaml
@@ -64,6 +68,7 @@ RollingUpdate - удаляет один экземпляр старой верс
 Все ноды связываются с любыми контейнерами без NAT
 
 kubectl get service
+kubectl expose pod redis --port=6379 --name redis-service
 
 -------------------------------NAMESPACE----------------------------------
 В одном пространстве
