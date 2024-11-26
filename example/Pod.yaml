@@ -22,3 +22,15 @@ spec:
       env:
         - name: ROCKET_SIZE
           value: average
+#        - name: ROCKET_SIZE
+#          valueFrom:
+#            configMapKeyRef:
+#              key: ROCKET_SIZE
+#              name: rocket-config
+      envFrom:
+        - configMapRef:
+            name: rocket-config
+#  volumes:
+#    - name: rockets-config-volume
+#      configMap:
+#        name: rocket-config

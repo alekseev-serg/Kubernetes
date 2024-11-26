@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rocket-config
+  namespace: namespace
+data:
+  ROCKET_SIZE: "average"
+  DB_NAME: "test"
+  APP_MODE: "dev"
