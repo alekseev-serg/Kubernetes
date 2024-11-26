@@ -15,5 +15,10 @@ metadata:
     type: frontend
 spec:
   containers:
-    - name: nginx-container
-      image: nginx
+    - name: python-container
+      image: python
+      command: ["python3", "app.py"]
+      args: ["--size", "big"]
+      env:
+        - name: ROCKET_SIZE
+          value: average
