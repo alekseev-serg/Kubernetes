@@ -25,6 +25,8 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/a
 kubectl run nginx --image nginx
 kubectl get pods
 kubectl get pods -o wide - подробности
+kubectl get pods --all-namespaces
+kubectl get pods -A
 kubectl describe pod podname
 kubectl delete pod podname
 
@@ -62,3 +64,24 @@ RollingUpdate - удаляет один экземпляр старой верс
 Все ноды связываются с любыми контейнерами без NAT
 
 kubectl get service
+
+-------------------------------NAMESPACE----------------------------------
+В одном пространстве
+mysql.connect("db-service")
+
+В пространство имён dev
+mysql.connect("db-service.dev.svc.cluster.local")
+
+kubectl get pods - вывод подов из неймспейса default
+kubectl get pods --namespace=kube-system - вывод подов из неймспейса kube-system
+
+kubectl create -f pod.yaml --namespace=dev
+
+kubectl create namespace dev
+kubectl create -f Namespace.yaml
+
+Переключение Namespace по умолчанию
+kubectl config set-context $(kubectl config current-context) --namespace=dev
+
+Чтобы ограничить ресурсы в неймспейсе, необходимо создать Resource Quota
+kubectl create -f ResourceQuota.yaml
