@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app
+  namespace: elastic-stack
+  labels:
+    name: app
+spec:
+  containers:
+  - name: app
+    image: rotorocloud/log-generator
+    volumeMounts:
+    - mountPath: /log
+      name: log-volume
+
+  - name: sidecar
+    image: rotorocloud/filebeat
+    volumeMounts:
+    - mountPath: /var/log/log-generator/
+      name: log-volume
+
+  volumes:
+  - name: log-volume
+    hostPath:
+      # расположение каталога на хосте
+      path: /var/log/webapp
+      # это поле необязательное
+      type: DirectoryOrCreate

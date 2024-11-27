@@ -137,3 +137,6 @@ kubectl taint nodes controlplane node-role.kubernetes.io/control-plane:NoSchedul
 
 -----------------NODE-SELECTOR NODE-AFFINITY------------------------------
 kubectl labels nodes node-name label-key=label-value
+
+------------------------Multi-Container-Pods------------------------------
+Type: SIDECAR, ADAPTER, AMBASSADOR
