@@ -124,3 +124,13 @@ kubectl create serviceaccount dashboard-account
 kubectl get serviceaccount
 kubectl describe serviceaccount
 kubectl describe secret
+
+-------------------------------TAINT_TOLERATION__________________________
+kubectl taint nodes node-name key=value:taint-effect
+taint-effect - NoSchedule PreferNoSchedule NoExecute
+
+kubectl taint nodes node01 app=green:NoSchedule
+kubectl describe node controlplane | grep Taint
+
+Убрать taints
+kubectl taint nodes controlplane node-role.kubernetes.io/control-plane:NoSchedule-

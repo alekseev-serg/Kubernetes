@@ -17,6 +17,11 @@ spec:
   serviceAccountName: new-service-account
   securityContext:
     runAsUser: 1010
+  tolerations:
+    - key: "app"
+      operator: "Equal"
+      value: "green"
+      effect: "NoSchedule"
   containers:
     - name: python-container
       image: python
