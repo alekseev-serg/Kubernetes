@@ -17,6 +17,18 @@ spec:
   serviceAccountName: new-service-account
   securityContext:
     runAsUser: 1010
+  #  nodeSelector:
+  #    size: "large"
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: size
+                operator: In
+                values:
+                  - large
+                  - medium
   tolerations:
     - key: "app"
       operator: "Equal"
@@ -37,9 +49,9 @@ spec:
           add:
             - "SYS_TIME"
             - "NET_ADMIN"
-#      securityContext:
-#        runAsUser: 1001
-#      command: [ "python3", "app.py" ]
+      #      securityContext:
+      #        runAsUser: 1001
+      #      command: [ "python3", "app.py" ]
       command: [ "sleep", "500" ]
       args: [ "--size", "big" ]
       env:

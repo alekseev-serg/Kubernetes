@@ -125,7 +125,7 @@ kubectl get serviceaccount
 kubectl describe serviceaccount
 kubectl describe secret
 
--------------------------------TAINT_TOLERATION__________________________
+-------------------------------TAINT_TOLERATION----------------------------
 kubectl taint nodes node-name key=value:taint-effect
 taint-effect - NoSchedule PreferNoSchedule NoExecute
 
@@ -134,3 +134,6 @@ kubectl describe node controlplane | grep Taint
 
 Убрать taints
 kubectl taint nodes controlplane node-role.kubernetes.io/control-plane:NoSchedule-
+
+-----------------NODE-SELECTOR NODE-AFFINITY------------------------------
+kubectl labels nodes node-name label-key=label-value
