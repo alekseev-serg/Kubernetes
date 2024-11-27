@@ -115,3 +115,12 @@ kubectl apply -f secret.yaml
 
 kubectl get secrets
 kubectl get secret name -o yaml
+
+-------------------------------SERVICE_ACCOUNT----------------------------
+kubectl create serviceaccount dashboard-account
+Когда создаётся сервис аккаут сначала создаётся объект SA, а затем генерируется токен SA,
+после создаётся сикрет, внутри которого и будет токен. Сикрет связывается с созданным SA.
+
+kubectl get serviceaccount
+kubectl describe serviceaccount
+kubectl describe secret
