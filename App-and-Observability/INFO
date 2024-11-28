@@ -1,0 +1,6 @@
+Статусы контейнеров: CONTAINER_CREATING, PENDING, RUNNING, SUCCEEDED, FAILED, UNKNOWN
+
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/release/latest/download/components.yaml
+
+kubectl top node
+kubectl top pod -A

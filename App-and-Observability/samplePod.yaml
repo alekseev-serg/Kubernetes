@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: api-server
+  labels:
+    name: api-server
+spec:
+  containers:
+    - image: rotorocloud/webapp:ubuntu
+      name: api_server
+      ports:
+        - containerPort: 8080
+      readinessProbe:
+        httpGet:
+          path: /ready
+          port: 8080
+      startupProbe:
+        httpGet:
+          port: 8080
+          path: /ready
+        periodSeconds: 10
+        failureThreshold: 30
+      livenessProbe:
+        httpGet:
+          port: 8080
+          path: /ready
+        initialDelaySeconds: 80
