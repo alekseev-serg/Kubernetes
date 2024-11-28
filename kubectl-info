@@ -140,3 +140,12 @@ kubectl labels nodes node-name label-key=label-value
 
 ------------------------Multi-Container-Pods------------------------------
 Type: SIDECAR, ADAPTER, AMBASSADOR
+
+----------------------------DAEMON-SET------------------------------------
+kubectl create -f daemonset.yaml
+kubectl get daemonsets
+kubectl describe daemonset node-exporter
+
+
+Генерация деплойментов через драйран
+kubectl create deployment elasticsearch --image=registry.k8s.io/fluentd-elasticsearch:1.20 -n kube-system --dry-run=client -o yaml > fluentd.yaml
