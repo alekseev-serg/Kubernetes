@@ -1,0 +1,22 @@
+-------------------------READINESS-LIVENESS-STARTUP-PROBE-----------------------
+Статусы контейнеров: CONTAINER_CREATING, PENDING, RUNNING, SUCCEEDED, FAILED, UNKNOWN
+
+----------------------------------METRICS---------------------------------------
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/release/latest/download/components.yaml
+
+kubectl top node
+kubectl top pod -A
+
+----------------------------------AUTOSCALE-------------------------------------
+kubectl apply -f deployment.yaml
+kubectl expose deployment webserver --port 80
+kubectl autoscale deployment webserver --cpu-percent=50 --min=1 --max=3
+
+kubectl run load-generator --image=busybox -- /bin/sh -c "while true; do wget -q -O- http://web-server;done"
+
+kubect top pod
+watch kubectl top pod
+kubectl get hpa web-server
+
+-----------------------------------LOGGING--------------------------------------
+kubectl logs -f pod-name -- container-name
