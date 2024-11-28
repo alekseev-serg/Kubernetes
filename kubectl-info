@@ -49,6 +49,7 @@ kubectl create deployment nginx --image=nginx
 kubectl create -f deployment.yaml
 kubectl create deployment webapp --image=rotorocloud/simple-webapp-rockets --replicas=3
 kubectl create deployment redis-deploy -n=dev-ns --image=redis --replicas=2
+ubectl create deployment elasticsearch --image=registry.k8s.io/fluentd-elasticsearch:1.20 -n kube-system --dry-run=client -o yaml > fluentd.yaml
 kubectl get deployments
 
 kubectl apply -f deployment.yaml

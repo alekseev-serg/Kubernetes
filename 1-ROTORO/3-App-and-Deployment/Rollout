@@ -1,0 +1,10 @@
+kubectl rollout status deployment/name
+kubectl rollout history deployment/name
+
+kubectl rollout undo deployment/name - откатить изменения
+
+Стратегии деплоймента
+Recreate - сначала удаляет, потом создаёт
+RollingUpdate - удаляет один экземпляр старой версии и добавляет новый и так постепенно все.
+
+kubectl create deployment elasticsearch --image=registry.k8s.io/fluentd-elasticsearch:1.20 -n kube-system --dry-run=client -o yaml > fluentd.yaml
