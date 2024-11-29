@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: expr-job
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: ubuntu-math
+              image: ubuntu
+              command: [ 'expr', '3', '+', '5' ]
+          restartPolicy: Never
+      completions: 3 # завершается когда 3 успешных выполнения
+      parallelism: 3 # параллельный запуск
+      backoffLimit: 2 # Количество попыток до отключения Job
+
+      ttlSecondsAfterFinished: 100 # время в секундах, после которых удаляется созданная сущность Job
+
+  concurrencyPolicy: Forbid # дождаться завершения Job прежде чем запускать следующую

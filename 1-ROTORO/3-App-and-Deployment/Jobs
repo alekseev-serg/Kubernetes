@@ -1,0 +1,11 @@
+restartPolicy: Always
+restartPolicy: Never
+
+--------------------------------JOBS-----------------------------------
+Набор подов, которые выполняют определённую задачу и завершают свою работу
+kubectl logs pod-name
+kubectl delete jobs job-name
+
+--------------------------------CRONJOBS-------------------------------
+kubectl create -f cronJob.yaml
+kubectl get cronjobs
