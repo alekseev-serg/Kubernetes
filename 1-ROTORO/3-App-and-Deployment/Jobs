@@ -5,6 +5,8 @@ restartPolicy: Never
 Набор подов, которые выполняют определённую задачу и завершают свою работу
 kubectl logs pod-name
 kubectl delete jobs job-name
+kubectl get jobs.batch -w
+kubectl create job error-gen-job --image=rotorocloud/error-gen --dry-run=client -o yaml  > error-gen-job.yaml
 
 --------------------------------CRONJOBS-------------------------------
 kubectl create -f cronJob.yaml
