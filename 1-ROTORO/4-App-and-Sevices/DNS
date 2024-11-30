@@ -1,0 +1,18 @@
+Утилы для DNS
+NSLOOKUP
+DUG
+HOST
+
+Для сервиса который смотрит на под.
+http://nginx.apps.svc.cluster.local
+nginx - имя сервиса
+apps - имя неймспейса
+svc - тип службы
+cluster.local - домен кубера по умолчанию
+
+Для Пода:
+10-244-2-5.apps.pod.cluster.local
+10-244-2-5 - ip пода преобразованное в строку
+apps - имя неймспейса
+pod - тип службы
+cluster.local - домен кубера по умолчанию
