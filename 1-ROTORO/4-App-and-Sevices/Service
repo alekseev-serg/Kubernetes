@@ -1,0 +1,6 @@
+ 1) NodePort (30000-32767 диапозон портов)
+ 2) ClusterIp (по умолчанию)
+ 3) LoadBalancer
+
+kubectl create -f Service.yaml
+kubectl get svc
