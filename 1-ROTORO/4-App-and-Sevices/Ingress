@@ -1,0 +1,16 @@
+kubectl create -f ingress-store.yaml
+kubectl get ingress
+kubectl descrbe ingress ingress-rule
+
+kubectl create namespace ingress-space
+kubectl create configmap nginx-configuration -n ingress-space
+kubectl create serviceaccount ingress-serviceaccount -n ingress-space
+
+kubectl create ingress <ingress_name> --rule=<ingress_rule> --class=<ingress_class>
+
+kubectl create ingress -n app-space ingress-store-meet \
+--default-backend=default-http-backend:80 \
+--rule=/shop=store-service:8080 \
+--rule=/conference=meet-service:8080 \
+--annotation=nginx.ingress.kubernetes.io/rewrite-target=/ \
+--class=nginx

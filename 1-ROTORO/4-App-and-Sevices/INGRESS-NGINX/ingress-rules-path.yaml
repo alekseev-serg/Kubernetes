@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-store-meet
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+    - http:
+        paths:
+          - backend:
+              service:
+                name: meet-service
+                port:
+                  number: 80
+            pathType: Prefix
+            path: /meet
+          - backend:
+              service:
+                name: store-service
+                port:
+                  number: 80
+            pathType: Prefix
+            path: /store

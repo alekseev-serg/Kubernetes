@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-store-meet
+spec:
+  rules:
+    - host: meet.store.ru
+      http:
+        paths:
+          - backend:
+              service:
+                name: meet-service
+                port:
+                  number: 80
+            pathType: Prefix
+    - host: store.store.ru
+      http:
+        - paths:
+            - backend:
+                service:
+                  name: conference-service
+                  port:
+                    number: 80
+              pathType: Prefix
