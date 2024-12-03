@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-log
+spec:
+  persistentVolumeReclaimPolicy: Retain # политика поведения Volume будет оставаться, пока не удалят в ручную и не пересоздадут
+#  persistentVolumeReclaimPolicy: Delete - автоматически удаляет PV и данные после отцепления от PVC
+#  persistentVolumeReclaimPolicy: Recycle - данные в томе будут очищены и том станет доступным для других PVC
+  accessModes: # Как вольюм работает на хостах
+    - ReadWriteOnce # Только для чтения и только одной нодой
+    - ReadOnlyMany # Только для чтения из нескольких нод
+    - ReadWriteMany # Для чтения и записи из нескольких нод
+    - ReadWriteOncePod # Только для чтения и только из одного пода
+  capacity:
+    storage: 100Mi
+  hostPath:
+    path: /pv/log
