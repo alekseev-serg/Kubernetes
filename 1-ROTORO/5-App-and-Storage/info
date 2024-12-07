@@ -12,3 +12,11 @@ kubectl get pv
 
 ----------------------------Storage Class------------------------------
 PV и любое связанное с ним хранилище будут созданы автоматически при определение в PVC
+
+----------------------------StatefulSet------------------------------
+Тоже самое что и деплоймент, только поды разворачиваются по очереди.
+Назначает каждому поду индекс.
+
+kubectl create -f ss-def.yaml
+kubectl scale statefulset mysql --replicas=5
+kubectl scale statefulset mysql --replicas=3

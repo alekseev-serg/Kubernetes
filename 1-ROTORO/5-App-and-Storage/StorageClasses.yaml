@@ -5,6 +5,7 @@ kind: StorageClass
 metadata:
   name: my-gcp-storage
 provisioner: kubernetes.io/gce-pd
+volumeBindingMode: WaitForFirstConsumer
 parameters:
   type: pd-standart
   replication-type: none

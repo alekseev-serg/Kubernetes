@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - name: mysql
+          image: mysql
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: data-volume
+      volumes:
+        - name: data-volume
+          persistentVolumeClaim:
+            claimName: claim-mysql
+  replicas: 3
+  serviceName: mysql-hl
+  podManagementPolicy: Parallel # разворачивает сразу все поды, а не последовательно
+  volumeClaimTemplates:
+    - metadata:
+        name: claim-mysql
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        storageClassName: my-gcp-storage
+        resources:
+          requests:
+            storage: 500Mi
