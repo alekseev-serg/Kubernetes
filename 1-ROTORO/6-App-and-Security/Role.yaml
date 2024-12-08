@@ -1,0 +1,23 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: Developer
+rules:
+  - verbs:
+      - get
+      - watch
+      - list
+      - create
+      - update
+      - delete
+    resources:
+      - pods
+    resourceNames:
+      - white
+      - green
+    apiGroups: [""]
+  - verbs:
+      - create
+    resources:
+      - secrets
+    apiGroups: [""]

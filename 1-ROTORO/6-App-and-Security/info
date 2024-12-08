@@ -1,1 +1,25 @@
-string
+kubectl config view
+kubectl config view --kubeconfig=my-config
+kubectl config use-context my-kube-admin@my-kube --kubeconfig=my-config
+
+kubectl config -h
+
+kubectl describe pod kube-apiserver-controlplane -n kube-system
+
+-----------------API_LIST------------------
+curl http://localhost:6443 -k | grep "name"
+
+--------------------RBAC-------------------
+Чтобы создать для девелопера права необходимо создать kind Role и прописать там требуемы разрешения
+Далее создаём RoleBinding, чтобы связать kind User и kind Role
+
+kubectl create role developer --namespace=default --verb=list,create,delete --resource=pods
+kubectl create rolebinding dev-user-binding --namespace=default --role=developer --user=dev-user
+
+kubectl create -f Role.yaml
+kubectl create -f RoleBinding.yaml
+kubectl get roles
+
+kubectl auth can-i create deployments
+kubectl auth can-i delete nodes
+kubectl auth can-i create pods --as dev-user --namespace prod
