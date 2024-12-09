@@ -23,3 +23,7 @@ kubectl get roles
 kubectl auth can-i create deployments
 kubectl auth can-i delete nodes
 kubectl auth can-i create pods --as dev-user --namespace prod
+
+--------------------CLUSTER-ROLE-CLUSTER-ROLE-BINDING-------------------
+kubectl create clusterrole node-admin --verb=get,list,watch,create,delete --resource=nodes
+kubectl create clusterrolebinding alena-binding --clusterrole=node-admin --user=alena
