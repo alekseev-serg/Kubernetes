@@ -26,4 +26,12 @@ kubectl auth can-i create pods --as dev-user --namespace prod
 
 --------------------CLUSTER-ROLE-CLUSTER-ROLE-BINDING-------------------
 kubectl create clusterrole node-admin --verb=get,list,watch,create,delete --resource=nodes
+kubectl create clusterrolebinding alena-binding --clusterrole=node-admin --user=alena0
+
+--------------------Admission Controllers---------------------------
+/etc/kubernetes/manifests/kube-apiserver.yaml
+cat kube-apiserver -h | grep enable-admission-plugins
+kubectl exec kube-apiserver-controlplane -n kube-system -- kube-apiserver -h | grep enable-admission-plugins
+
+--enable-admission-plugins=NodeRestriction,NamespaceAutoProvision
 kubectl create clusterrolebinding alena-binding --clusterrole=node-admin --user=sergey
