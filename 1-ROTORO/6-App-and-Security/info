@@ -35,3 +35,8 @@ kubectl exec kube-apiserver-controlplane -n kube-system -- kube-apiserver -h | g
 
 --enable-admission-plugins=NodeRestriction,NamespaceAutoProvision
 kubectl create clusterrolebinding alena-binding --clusterrole=node-admin --user=sergey
+
+-----------------Создание секрета---------------------
+kubectl -n webhook-demo create secret tls webhook-server-tls \
+    --cert "/root/keys/webhook-server-tls.crt" \
+    --key "/root/keys/webhook-server-tls.key"

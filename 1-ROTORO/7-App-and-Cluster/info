@@ -1,0 +1,5 @@
+###################### API Version ##########################
+kubectl api-resource
+
+Включить версию v1alpha1 для API группы rbac.authorization.k8s.io на узле controlplane
+
